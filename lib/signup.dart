@@ -1,36 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:test/signup.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Setting',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpState extends State<SignUp> {
   GlobalKey<FormState> _signInKey = GlobalKey();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -52,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20,
             ),
             const Text(
-              "Log in to twitter",
+              "Signup to twitter",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Container(
@@ -117,16 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                   },
                   child: const Text(
-                    "Login",
+                    "Sign Up",
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   )),
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const SignUp()));
+                  Navigator.of(context).pop();
                 },
-                child: const Text("Don't have an account? Sign up here."))
+                child: const Text("Already have an account? Login here."))
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
