@@ -32,12 +32,15 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    int counter = ref.watch(counterProvider);
+    CounterNotifier counterController = ref.watch(counterProvider.notifier);
     return Scaffold(
       appBar: AppBar(title: const Text("Riverpod simplified")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("Counter: $counter"),
             Text(
               ref.read(normalProvider),
             ),
@@ -56,6 +59,14 @@ class HomePage extends ConsumerWidget {
               },
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counterController.add();
+        },
+        child: const Icon(
+          Icons.add,
         ),
       ),
     );

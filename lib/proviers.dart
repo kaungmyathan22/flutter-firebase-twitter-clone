@@ -9,3 +9,14 @@ final messageProvider = FutureProvider<String>((ref) async {
     return "a message is returned";
   });
 });
+
+final counterProvider = StateNotifierProvider<CounterNotifier, int>((ref) {
+  return CounterNotifier();
+});
+
+class CounterNotifier extends StateNotifier<int> {
+  CounterNotifier() : super(0);
+  void add() {
+    state = state + 1;
+  }
+}
